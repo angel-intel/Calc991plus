@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sheet Music Progress</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🎼 Sheet Music Progress</h1>
+    <div class="backup">
+      <button id="export-btn" class="secondary">Export backup</button>
+      <label class="secondary button">
+        Import backup
+        <input type="file" id="import-input" accept="application/json" hidden>
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <!-- Screen 1: list of all pieces -->
+    <section id="list-view">
+      <form id="add-piece-form" class="card">
+        <input name="title" placeholder="Piece title (e.g. Clair de Lune)" required>
+        <input name="composer" placeholder="Composer (optional)">
+        <button type="submit">Add piece</button>
+      </form>
+      <div id="piece-list"></div>
+    </section>
+
+    <!-- Screen 2: one piece and its sections -->
+    <section id="piece-view" hidden>
+      <button id="back-btn" class="secondary">← All pieces</button>
+      <div class="card">
+        <h2 id="piece-title"></h2>
+        <p id="piece-composer" class="muted"></p>
+        <div class="progress"><div id="piece-progress-bar"></div></div>
+        <p id="piece-progress-text" class="muted"></p>
+      </div>
+
+      <form id="add-section-form" class="card">
+        <input name="name" placeholder="Section name (e.g. Intro, A, Bars 1–16)" required>
+        <input name="bars" placeholder="Bars (optional, e.g. 1–16)">
+        <button type="submit">Add section</button>
+      </form>
+
+      <div id="section-list"></div>
+      <button id="delete-piece-btn" class="danger">Delete this piece</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
